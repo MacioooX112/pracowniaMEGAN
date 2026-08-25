@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import logo from "@/images/logo-megan.png"
 import { ArrowLeft, ArrowRight, CalendarDays, ChevronDown, CircleHelp, Mail, MapPin, Menu, MessageCircle, Phone, Target, ThumbsUp, Users, X } from 'lucide-react'
 
 const nav = [['Kursy', '#kursy'], ['Zajęcia', '#formy'], ['Cennik', '#cennik'], ['Opinie', '#opinie'], ['Pytania', '#pytania']]
@@ -51,6 +53,7 @@ export default function Page() {
   const [opinionIndex, setOpinionIndex] = useState(0)
   const [visibleOpinions, setVisibleOpinions] = useState(2)
   const [contactView, setContactView] = useState<'contact' | 'form'>('contact')
+  const [touchStart, setTouchStart] = useState<number | null>(null)
 
   // Stany dla Opinii
   const [opinionsList, setOpinionsList] = useState(initialOpinions)
@@ -149,7 +152,15 @@ const getColorPair = (name: string) => {
     <header className="site-header"><a href="#start" className="logo">Pracownia<br /><strong>MEGAN</strong></a><nav>{nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}<a className="phone-pill" href="tel:501486888"><Phone size={17} />501 486 888</a></nav><button className="menu-button" aria-label="Otwórz menu" onClick={() => setMobile(true)}><Menu /></button></header>
     {mobile && <div className="mobile-overlay" onClick={() => setMobile(false)}><div className="mobile-menu" onClick={(e) => e.stopPropagation()}><div className="mobile-menu-top"><span className="logo">Pracownia<br /><strong>MEGAN</strong></span><button aria-label="Zamknij menu" onClick={() => setMobile(false)}><X /></button></div>{nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMobile(false)}>{label}</a>)}<a className="button" href="#kontakt" onClick={() => setMobile(false)}>Napisz wiadomość</a></div></div>}
     <div className="location">Zielona Góra · Źródlana 30A</div>
-    <section id="start" className="hero"><div className="portrait"><img src="https://pracownia-megan.prezentacjastrony.pl/images/logo-megan.png" alt="Logo Pracowni Megan" /></div><div className="hero-copy"><Kicker>JĘZYK, KTÓRY ŻYJE</Kicker><h1>Przywitaj się<br />z nowym językiem</h1><p>Kameralne kursy angielskiego w Zielonej Górze.<br />Dzieci, młodzież i dorośli, grupy do pięciu osób.</p><div className="hero-actions"><a className="button" href="tel:501486888"><Phone size={18} />501 486 888</a><a className="outline-button" href="#kontakt">Napisz wiadomość</a></div></div></section>
+    <section id="start" className="hero"><div className="portrait">
+    <Image 
+      src={logo} 
+      alt="Logo Pracowni Megan"
+      width={300} // dopasuj rzeczywiste wymiary obrazka
+      height={300}
+      priority // wymusza preload obrazu (LCP optimization)
+    />
+  </div><div className="hero-copy"><Kicker>JĘZYK, KTÓRY ŻYJE</Kicker><h1>Przywitaj się<br />z nowym językiem</h1><p>Kameralne kursy angielskiego w Zielonej Górze.<br />Dzieci, młodzież i dorośli, grupy do pięciu osób.</p><div className="hero-actions"><a className="button" href="tel:501486888"><Phone size={18} />501 486 888</a><a className="outline-button" href="#kontakt">Napisz wiadomość</a></div></div></section>
     <section id="o-nas" className="section patterned reveal"><div className="pattern-motifs" aria-hidden="true">{Array.from({ length: 24 }, (_, index) => { const Icon = [CircleHelp, MessageCircle, ThumbsUp][index % 3]; return <Icon key={index} size={index % 3 === 1 ? 32 : 26} strokeWidth={1.35} /> })}</div><div className="pattern-content"><h2>Dlaczego Pracownia Megan</h2><div className="benefit-grid">{benefits.map(({ title, text, icon: Icon }) => <article className="benefit reveal reveal-delay" key={title}><div className="benefit-icon" aria-hidden="true"><Icon size={28} strokeWidth={1.8} /></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
     <section id="jak-wygladaja" className="section process-section"><Kicker>BEZ NIESPODZIANEK</Kicker><h2>Jak wyglądają zajęcia</h2><div className="process-grid" aria-label="Jak wyglądają zajęcia">{processSteps.map(([title, text], index) => <article className="process-step" key={title}><div className="process-number">0{index + 1}</div><h3>{title}</h3><p>{text}</p>{index < processSteps.length - 1 && <ArrowRight className="process-arrow" aria-hidden="true" />}</article>)}</div></section>
     <section id="kursy" className="section courses reveal"><Kicker>DLA KAŻDEGO WIEKU</Kicker><h2>Kursy</h2><div className="course-grid">{courses.map(([title, text, tags, image], index) => <article className={`course reveal course-slide-${(index % 2) === 0 ? 'left' : 'right'}`} key={title as string}><img src={image as string} alt="" /><div className="course-copy"><h3>{title}</h3><p>{text}</p><div className="tags">{(tags as string[]).map((tag) => <span key={tag}>{tag}</span>)}</div></div></article>)}</div></section>
@@ -157,42 +168,85 @@ const getColorPair = (name: string) => {
     
     {/* SEKCJA OPINII PODPIĘTA POD STATE */}
     <section id="opinie" className="reviews reveal">
-      <h2>Opinie</h2>
-      <div className="review-carousel">
-        <button className="carousel-arrow" aria-label="Poprzednia opinia" disabled={opinionIndex === 0} onClick={() => setOpinionIndex((index) => Math.max(0, index - 1))}><ArrowLeft /></button>
-        <div className="review-viewport">
-          <div className="review-track" style={{ transform: `translateX(calc(-${opinionIndex} * (var(--opinion-card-width) + var(--opinion-gap))))` }}>
-            {opinionsList.filter(o => o.visible).map((opinion) => (
-              <blockquote key={opinion.name}>
-                <div className="review-author">
-                  {(() => {
-                    const { bg, text } = getColorPair(opinion.name);
-                    
-                    return (
-                      <i 
-                        aria-hidden="true" 
-                        style={{ 
-                          backgroundColor: bg,
-                          color: text 
-                        }}
-                      >
-                        {opinion.name.charAt(0)}
-                      </i>
-                    );
-                  })()}
-                  <div className="review-author-meta">
-                    <strong>{opinion.name}</strong>
-                    <small>opinia w Google</small>
-                  </div>
-                </div>
-                <p>{opinion.text}</p>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-        <button className="carousel-arrow" aria-label="Następna opinia" disabled={opinionIndex >= maxOpinionIndex} onClick={() => setOpinionIndex((index) => Math.min(maxOpinionIndex, index + 1))}><ArrowRight /></button>
+  <h2>Opinie</h2>
+  <div className="review-carousel">
+    <button 
+      className="carousel-arrow" 
+      aria-label="Poprzednia opinia" 
+      disabled={opinionIndex === 0} 
+      onClick={() => setOpinionIndex((index) => Math.max(0, index - 1))}
+    >
+      <ArrowLeft />
+    </button>
+    
+    <div 
+      className="review-viewport"
+      onTouchStart={(event) => setTouchStart(event.touches[0].clientX)}
+      onTouchEnd={(event) => {
+        if (touchStart === null) return;
+        const distance = event.changedTouches[0].clientX - touchStart;
+        if (Math.abs(distance) > 45) {
+          setOpinionIndex((index) => distance < 0 ? Math.min(maxOpinionIndex, index + 1) : Math.max(0, index - 1));
+        }
+        setTouchStart(null);
+      }}
+    >
+      <div 
+        className="review-track" 
+        style={{ transform: `translateX(calc(-${opinionIndex} * (var(--opinion-card-width) + var(--opinion-gap))))` }}
+      >
+        {opinionsList.filter(o => o.visible).map((opinion) => (
+          <blockquote key={opinion.name}>
+            <div className="review-author">
+              {(() => {
+                const { bg, text } = getColorPair(opinion.name);
+                return (
+                  <i 
+                    aria-hidden="true" 
+                    style={{ 
+                      backgroundColor: bg,
+                      color: text 
+                    }}
+                  >
+                    {opinion.name.charAt(0)}
+                  </i>
+                );
+              })()}
+              <div className="review-author-meta">
+                <strong>{opinion.name}</strong>
+                <small>opinia w Google</small>
+              </div>
+            </div>
+            <p>{opinion.text}</p>
+          </blockquote>
+        ))}
       </div>
-    </section>
+    </div>
+
+    <button 
+      className="carousel-arrow" 
+      aria-label="Następna opinia" 
+      disabled={opinionIndex >= maxOpinionIndex} 
+      onClick={() => setOpinionIndex((index) => Math.min(maxOpinionIndex, index + 1))}
+    >
+      <ArrowRight />
+    </button>
+  </div>
+
+  {/* Kropki nawigacyjne */}
+  <div className="opinion-dots" aria-label="Wybierz opinię">
+    {Array.from({ length: maxOpinionIndex + 1 }, (_, index) => (
+      <button
+        type="button"
+        key={index}
+        className={opinionIndex === index ? 'active' : ''}
+        aria-label={`Pokaż zestaw opinii ${index + 1}`}
+        aria-current={opinionIndex === index}
+        onClick={() => setOpinionIndex(index)}
+      />
+    ))}
+  </div>
+</section>
 
     <section id="pytania" className="section faq reveal"><Kicker>ZANIM ZADZWONISZ</Kicker><h2>Częste pytania</h2>{faqs.map(({ question, anwser }, index) => { const isOpen = open.includes(index); return <div className={`faq-item ${isOpen ? 'active' : ''}`} key={question}><button aria-expanded={isOpen} onClick={() => setOpen((current) => isOpen ? current.filter((item) => item !== index) : [...current, index])}><span>{question}</span><ChevronDown /></button><div className={`faq-answer ${isOpen ? 'is-open' : ''}`}><p>{anwser}</p></div></div> })}</section>
     
