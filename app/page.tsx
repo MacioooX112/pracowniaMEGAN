@@ -5,7 +5,7 @@ import Image from 'next/image'
 import logo from "@/images/logo-megan.png"
 import { ArrowLeft, ArrowRight, CalendarDays, ChevronDown, CircleHelp, Mail, MapPin, Menu, MessageCircle, Phone, Target, ThumbsUp, Users, X } from 'lucide-react'
 
-const nav = [['Kursy', '#kursy'], ['Zajęcia', '#formy'], ['Cennik', '#cennik'], ['Opinie', '#opinie'], ['Pytania', '#pytania']]
+const nav = [['Kursy', '#kursy'], ['Zajęcia', '#formy'], ['Opinie', '#opinie'], ['Pytania', '#pytania'], ['Kontakt', '#kontakt']]
 
 const benefits = [
   { title: 'Program pod jednego ucznia', text: 'Nie ma gotowego podręcznika dla wszystkich. Zaczynamy od rozmowy o tym, po co Ci angielski i na jakim jesteś poziomie.', icon: Target },
@@ -151,8 +151,8 @@ const getColorPair = (name: string) => {
   return <main>
     <header className="site-header"><a href="#start" className="logo">Pracownia<br /><strong>MEGAN</strong></a><nav>{nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}<a className="phone-pill" href="tel:501486888"><Phone size={17} />501 486 888</a></nav><button className="menu-button" aria-label="Otwórz menu" onClick={() => setMobile(true)}><Menu /></button></header>
     {mobile && <div className="mobile-overlay" onClick={() => setMobile(false)}><div className="mobile-menu" onClick={(e) => e.stopPropagation()}><div className="mobile-menu-top"><span className="logo">Pracownia<br /><strong>MEGAN</strong></span><button aria-label="Zamknij menu" onClick={() => setMobile(false)}><X /></button></div>{nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMobile(false)}>{label}</a>)}<a className="button" href="#kontakt" onClick={() => setMobile(false)}>Napisz wiadomość</a></div></div>}
-    <div className="location">Zielona Góra · Źródlana 30A</div>
-    <section id="start" className="hero"><div className="portrait">
+    <div className="location" id="start">Zielona Góra · Źródlana 30A</div>
+    <section className="hero"><div className="portrait">
     <Image 
       src={logo} 
       alt="Logo Pracowni Megan"
