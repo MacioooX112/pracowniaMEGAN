@@ -120,7 +120,7 @@ export async function POST(request: Request) {
     // Wysyłka maila na skrzynkę właścicielki
     await resend.emails.send({
       from: 'Formularz Pracownia Megan <onboarding@resend.dev>',
-      to: 'pracownia.megan@gmail.com',
+      to: 'pracowniamegan@gmail.com',
       replyTo: email,
       subject: `✉️ [Formularz] ${title || 'Zapytanie o kurs'} – ${name}`,
       text: `Imię i nazwisko: ${name}\nE-mail klienta: ${email}\nTemat: ${title || 'Zapytanie o kurs'}\n\nTreść wiadomości:\n${message}`,

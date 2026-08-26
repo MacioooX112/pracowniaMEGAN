@@ -1,37 +1,37 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { getGoogleReviews, Opinion } from '@/app/actions/getReviews';
 import Image from 'next/image'
 import logo from "@/images/logo-megan.png"
+import angielskidlamlodziezy from "@/images/angeilski-dla-mlodziezy.png"
+import angielskidladoroslych from "@/images/angielski-dla-doroslych.jpg"
+import konwersacja from "@/images/konwersacja.jpg"
+
 import { ArrowLeft, ArrowRight, CalendarDays, ChevronDown, CircleHelp, Mail, MapPin, Menu, MessageCircle, Phone, Target, ThumbsUp, Users, X } from 'lucide-react'
+import { StaticImageData } from 'next/image';
 
 const nav = [['Kursy', '#kursy'], ['Zajęcia', '#formy'], ['Opinie', '#opinie'], ['Pytania', '#pytania'], ['Kontakt', '#kontakt']]
 
 const benefits = [
   { title: 'Program pod jednego ucznia', text: 'Nie ma gotowego podręcznika dla wszystkich. Zaczynamy od rozmowy o tym, po co Ci angielski i na jakim jesteś poziomie.', icon: Target },
   { title: 'Nauka bez blokady', text: 'Blokada i wstyd przed mówieniem to najczęstszy powód, dla którego ktoś do mnie trafia. U mnie mówi się od pierwszej lekcji, bez oceniania i bez pośpiechu.', icon: MessageCircle },
-  { title: 'Grupy wiekowe', text: 'Młodsza i starsza młodzież, dorośli aż po osoby po siedemdziesiątce. Do każdej grupy inne tempo, inne materiały i inny sposób tłumaczenia.', icon: Users },
+  { title: 'Grupy wiekowe', text: 'Młodsza i starsza młodzież, dorośli, aż po osoby po siedemdziesiątce. Tempo, materiały i sposób tłumaczenia dostowsowane do każdego.', icon: Users },
   { title: '17 lat praktyki', text: 'Pracownia działa od 2009 roku. Przez ten czas zebrałam własne sposoby na to, co zwykle sprawia trudność: czasy, wymowę i strach przed pierwszym zdaniem.', icon: CalendarDays },
 ]
 
 const courses = [
-  ['Angielski dla młodzieży', 'Wsparcie przy szkole i przygotowanie do egzaminów. Gramatyka wyjaśniona tak, żeby wreszcie miała sens.', ['pod materiał szkolny', 'matura i egzamin ósmoklasisty', 'nauka mówienia'], 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85'],
-  ['Angielski dla dorosłych', 'Dla osób, które uczyły się latami i nadal boją się odezwać, oraz dla tych, którzy zaczynają zupełnie od zera. Zaczynamy od mówienia, gramatykę dokładam po drodze.', ['blokada językowa', 'angielski do pracy', 'wyjazdy i podróże'], 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85'],
-  ['Konwersacje', 'Godzina rozmowy na tematy, które Cię interesują. Poprawiam na bieżąco, ale nie przerywam w pół zdania.', ['swobodna rozmowa'], 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85'],
+  ['Angielski dla młodzieży', 'Wsparcie przy szkole i przygotowanie do egzaminów. Gramatyka wyjaśniona tak, żeby wreszcie miała sens.', ['pod materiał szkolny', 'matura i egzamin ósmoklasisty', 'nauka mówienia'], angielskidlamlodziezy],
+  ['Angielski dla dorosłych', 'Dla osób, które uczyły się latami i nadal boją się odezwać, oraz dla tych, którzy zaczynają zupełnie od zera.', ['blokada językowa', 'angielski do pracy', 'wyjazdy i podróże'], angielskidladoroslych],
+  ['Konwersacje', 'Rozmowy na tematy, które Cię interesują. Poprawiam na bieżąco, ale nie przerywam w pół zdania.', ['swobodna rozmowa'], konwersacja],
   ['Przygotowanie do egzaminów', 'Matura, egzamin ósmoklasisty, certyfikaty i rozmowy kwalifikacyjne. Ćwiczymy dokładnie ten format, który Cię czeka.', ['matura', 'certyfikaty', 'rozmowa kwalifikacyjna'], 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=85'],
 ]
 
-const formats = [['Zajęcia indywidualne', 'jeden na jeden, tempo dopasowane do ucznia'], ['Zajęcia w parze', 'nauka z drugą osobą o zbliżonym poziomie'], ['Mała grupa', 'kameralne zajęcia, każdy zdąży się odezwać'], ['Konwersacje', 'godzina rozmowy bez podręcznika'], ['Przygotowanie do egzaminu', 'pakiet zajęć pod konkretny termin'], ['Zajęcia online', 'przez internet, z dowolnego miejsca']]
+const formats = [['Zajęcia indywidualne', 'jeden na jeden, tempo dopasowane do ucznia'], ['Zajęcia w parze', 'nauka z drugą osobą o zbliżonym poziomie'], ['Mała grupa', 'kameralne zajęcia, każdy zdąży się odezwać'], ['Konwersacje', 'Rozmowy bez podręcznika'], ['Przygotowanie do egzaminu', 'Zajęcia pod konkretny format'], ['Zajęcia online', 'przez internet, z dowolnego miejsca']]
 const processSteps = [
-  ['Rozmowa', 'Dzwoni Pan albo Pani, umawiamy pierwsze spotkanie. Sprawdzam poziom i pytam, po co Panu ten angielski: praca, szkoła, wyjazd czy rozmowy z rodziną za granicą.'],
-  ['Program pod cel', 'Układam plan na najbliższe tygodnie: ile mówienia, ile gramatyki, jakie materiały. Program zmienia się w trakcie, jeśli okazuje się, że coś idzie szybciej albo wolniej.'],
+  ['Rozmowa', 'Umawiamy się na pierwsze spotkanie. Sprawdzam poziom i pytam do czego angielski jest potrzebny: praca, szkoła, wyjazd czy rozmowy z rodziną za granicą.'],
+  ['Program pod cel', 'Proponuję materiały na czas nauki. Modyfikuję je, gdy w jej trakcie coś idzie szybciej albo wolniej.'],
   ['Regularne zajęcia', 'Spotykamy się raz lub dwa razy w tygodniu w pracowni przy Źródlanej albo online, jeśli tak wygodniej. Po każdej lekcji wiadomo, co ćwiczyć do następnego razu.'],
-]
-
-const initialOpinions = [
-  { name: 'Anna Witek', text: 'Pani Małgosia jest niesamowitym lektorem. Nauka angielskiego z nią to czysta przyjemność, zwłaszcza dla osoby z taką blokadą językową jak ja. Tłumaczy wszystko w tak łatwy i przystępny sposób, że nawet krótki czas wystarczył, abym nauczyła się komunikować z obcokrajowcami. Sumienna, dokładna, a przy tym cudowny drugi człowiek.', visible: true },
-  { name: 'Krzysztof Hnatów', text: 'Pełna profeska dydaktyczna. Polecam.', visible: true },
-  { name: 'Marek Mostowiak', text: 'Wszystko ideolo.', visible: true },
 ]
 
 const faqs: { question: string; anwser: string }[] = [
@@ -50,15 +50,13 @@ function Kicker({ children }: { children: React.ReactNode }) {
 export default function Page() {
   const [open, setOpen] = useState<number[]>([])
   const [mobile, setMobile] = useState(false)
-  const [opinionIndex, setOpinionIndex] = useState(0)
-  const [visibleOpinions, setVisibleOpinions] = useState(2)
+  const [opinionsList, setOpinionsList] = useState<Opinion[]>([]);
+  const [cardsPerView, setCardsPerView] = useState(2);
+  const [opinionIndex, setOpinionIndex] = useState(0);
   const [contactView, setContactView] = useState<'contact' | 'form'>('contact')
   const [touchStart, setTouchStart] = useState<number | null>(null)
-
-  // Stany dla Opinii
-  const [opinionsList, setOpinionsList] = useState(initialOpinions)
-
-  // Stany dla Formularza Resend
+  const totalOpinions = opinionsList.filter((o) => o.visible).length;
+  const maxOpinionIndex = Math.max(0, totalOpinions - cardsPerView);
   const [formData, setFormData] = useState({ name: '', title: '', email: '', message: '' })
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
@@ -103,7 +101,7 @@ const getColorPair = (name: string) => {
 
   // Responsywność karuzeli opinii
   useEffect(() => {
-    const updateVisible = () => setVisibleOpinions(window.innerWidth < 700 ? 1 : 2)
+    const updateVisible = () => setCardsPerView(window.innerWidth < 700 ? 1 : 2)
     updateVisible()
     window.addEventListener('resize', updateVisible)
     return () => window.removeEventListener('resize', updateVisible)
@@ -122,6 +120,16 @@ const getColorPair = (name: string) => {
     document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element))
     return () => revealObserver.disconnect()
   }, [])
+  useEffect(() => {
+    async function fetchReviews() {
+      const googleReviews = await getGoogleReviews();
+      if (googleReviews.length > 0) {
+        setOpinionsList(googleReviews);
+      }
+    }
+    fetchReviews();
+  }, []);
+
 
   // Obsługa wysyłania formularza
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -145,9 +153,6 @@ const getColorPair = (name: string) => {
       setFormStatus('error')
     }
   }
-
-  const maxOpinionIndex = Math.max(0, opinionsList.length - visibleOpinions)
-
   return <main>
     <header className="site-header"><a href="#start" className="logo">Pracownia<br /><strong>MEGAN</strong></a><nav>{nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}<a className="phone-pill" href="tel:501486888"><Phone size={17} />501 486 888</a></nav><button className="menu-button" aria-label="Otwórz menu" onClick={() => setMobile(true)}><Menu /></button></header>
     {mobile && <div className="mobile-overlay" onClick={() => setMobile(false)}><div className="mobile-menu" onClick={(e) => e.stopPropagation()}><div className="mobile-menu-top"><span className="logo">Pracownia<br /><strong>MEGAN</strong></span><button aria-label="Zamknij menu" onClick={() => setMobile(false)}><X /></button></div>{nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMobile(false)}>{label}</a>)}<a className="button" href="#kontakt" onClick={() => setMobile(false)}>Napisz wiadomość</a></div></div>}
@@ -160,10 +165,30 @@ const getColorPair = (name: string) => {
       height={300}
       priority // wymusza preload obrazu (LCP optimization)
     />
-  </div><div className="hero-copy"><Kicker>JĘZYK, KTÓRY ŻYJE</Kicker><h1>Przywitaj się<br />z nowym językiem</h1><p>Kameralne kursy angielskiego w Zielonej Górze.<br />Dzieci, młodzież i dorośli, grupy do pięciu osób.</p><div className="hero-actions"><a className="button" href="tel:501486888"><Phone size={18} />501 486 888</a><a className="outline-button" href="#kontakt">Napisz wiadomość</a></div></div></section>
+  </div><div className="hero-copy"><Kicker>JĘZYK, KTÓRY SPRAWIA FRAJDĘ</Kicker><h1>Przejdź na ty<br />z angielskim</h1><p>Kameralne kursy angielskiego w Zielonej Górze.<br />Młodzież młodsza i starsza, oraz dorośli.<br/> Zajęcia indywidualne i grupowe do pięciu osób.</p><div className="hero-actions"><a className="button" href="tel:501486888"><Phone size={18} />501 486 888</a><a className="outline-button" href="#kontakt">Napisz wiadomość</a></div></div></section>
     <section id="o-nas" className="section patterned reveal"><div className="pattern-motifs" aria-hidden="true">{Array.from({ length: 24 }, (_, index) => { const Icon = [CircleHelp, MessageCircle, ThumbsUp][index % 3]; return <Icon key={index} size={index % 3 === 1 ? 32 : 26} strokeWidth={1.35} /> })}</div><div className="pattern-content"><h2>Dlaczego Pracownia Megan</h2><div className="benefit-grid">{benefits.map(({ title, text, icon: Icon }) => <article className="benefit reveal reveal-delay" key={title}><div className="benefit-icon" aria-hidden="true"><Icon size={28} strokeWidth={1.8} /></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
     <section id="jak-wygladaja" className="section process-section"><Kicker>BEZ NIESPODZIANEK</Kicker><h2>Jak wyglądają zajęcia</h2><div className="process-grid" aria-label="Jak wyglądają zajęcia">{processSteps.map(([title, text], index) => <article className="process-step" key={title}><div className="process-number">0{index + 1}</div><h3>{title}</h3><p>{text}</p>{index < processSteps.length - 1 && <ArrowRight className="process-arrow" aria-hidden="true" />}</article>)}</div></section>
-    <section id="kursy" className="section courses reveal"><Kicker>DLA KAŻDEGO WIEKU</Kicker><h2>Kursy</h2><div className="course-grid">{courses.map(([title, text, tags, image], index) => <article className={`course reveal course-slide-${(index % 2) === 0 ? 'left' : 'right'}`} key={title as string}><img src={image as string} alt="" /><div className="course-copy"><h3>{title}</h3><p>{text}</p><div className="tags">{(tags as string[]).map((tag) => <span key={tag}>{tag}</span>)}</div></div></article>)}</div></section>
+    <section id="kursy" className="section courses reveal"><Kicker>DLA KAŻDEGO WIEKU</Kicker><h2>Kursy</h2><div className="course-grid">{courses.map(([title, text, tags, image], index) => 
+      <article className={`course reveal course-slide-${(index % 2) === 0 ? 'left' : 'right'}`} key={title as string}>
+        {/* Kontener na zdjęcie */}
+        <div className="relative w-full h-48 overflow-hidden">
+          <Image 
+            src={image as string | StaticImageData} 
+            fill 
+            alt="" 
+            className="object-cover" 
+          />
+        </div>
+
+        <div className="course-copy">
+          <h3>{title as string}</h3>
+          <p>{text as string}</p>
+          <div className="tags">
+            {(tags as string[]).map((tag) => <span key={tag}>{tag}</span>)}
+          </div>
+        </div>
+      </article>
+      )}</div></section>
     <section id="formy" className="section formats"><Kicker>ELASTYCZNIE DLA CIEBIE</Kicker><h2>Formy zajęć</h2><div className="format-list">{formats.map(([title, text], index) => <div className="format-row" key={title}><span className="format-number">0{index + 1}</span><strong>{title}</strong><span>{text}</span></div>)}</div><a className="button" href="#kontakt">Zapytaj o cenę</a></section>
     
     {/* SEKCJA OPINII PODPIĘTA POD STATE */}
@@ -255,12 +280,12 @@ const getColorPair = (name: string) => {
       <h2>Zapisz się</h2>
       <div className="contact-tabs" role="tablist" aria-label="Zapisz się">
         <button type="button" role="tab" aria-selected={contactView === 'contact'} className={contactView === 'contact' ? 'active' : ''} onClick={() => setContactView('contact')}><Phone aria-hidden="true" />501 486 888</button>
-        <button type="button" role="tab" aria-selected={contactView === 'form'} className={contactView === 'form' ? 'active' : ''} onClick={() => setContactView('form')}><Mail aria-hidden="true" />pracownia.megan@gmail.com</button>
+        <button type="button" role="tab" aria-selected={contactView === 'form'} className={contactView === 'form' ? 'active' : ''} onClick={() => setContactView('form')}><Mail aria-hidden="true" />pracowniamegan@gmail.com</button>
       </div>
       <div className={`contact-grid contact-view-${contactView}`}>
         <div className="contact-info" role="tabpanel" tabIndex={0} onClick={() => setContactView('contact')} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setContactView('contact') }}>
           <a href="tel:501486888" className="big-phone"><Phone />501 486 888</a>
-          <a href="mailto:pracownia.megan@gmail.com" className="email"><Mail />pracownia.megan@gmail.com</a>
+          <a href="mailto:pracowniamegan@gmail.com" className="email"><Mail />pracowniamegan@gmail.com</a>
           <div className="hours">{['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'].map((day, i) => <div key={day}><span>{day}</span><b>{i < 5 ? '7:00 - 19:00' : 'nieczynne'}</b></div>)}</div>
           <div className="address"><MapPin size={19} />Źródlana 30A<br />65-734 Zielona Góra</div>
           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10322.726681744294!2d15.510340000000001!3d51.951976!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470613ea8065700d%3A0xf21a9bbfa11be3b0!2zxblyw7NkbGFuYSAzMEEsIDY1LTczNCBaaWVsb25hIEfDs3JhLCBQb2xza2E!5e1!3m2!1spl!2sus!4v1787571751475!5m2!1spl!2sus" width="600" height="450" loading="lazy"></iframe>
