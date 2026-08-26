@@ -69,7 +69,6 @@ export default function Page() {
   { bg: '#99F6E4', text: '#134E4A' }  // Turkusowy
 ];
 
-// Funkcja przypisująca stałą parę kolorów do nazwy użytkownika
 const getColorPair = (name: string) => {
   if (!name) return COLOR_PAIRS[0];
   
@@ -79,25 +78,6 @@ const getColorPair = (name: string) => {
   }
   return COLOR_PAIRS[Math.abs(hash) % COLOR_PAIRS.length];
 };
-
-  // Pobieranie opinii z API
-  useEffect(() => {
-    async function fetchOpinions() {
-      try {
-        const res = await fetch('/api/reviews')
-        if (res.ok) {
-          const data = await res.json()
-          console.log(data)
-          if (Array.isArray(data) && data.length > 0) {
-            setOpinionsList(data)
-          }
-        }
-      } catch (err) {
-        console.error('Błąd podczas pobierania opinii:', err)
-      }
-    }
-    fetchOpinions()
-  }, [])
 
   // Responsywność karuzeli opinii
   useEffect(() => {
@@ -120,6 +100,7 @@ const getColorPair = (name: string) => {
     document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element))
     return () => revealObserver.disconnect()
   }, [])
+
   useEffect(() => {
     async function fetchReviews() {
       const googleReviews = await getGoogleReviews();
@@ -161,9 +142,9 @@ const getColorPair = (name: string) => {
     <Image 
       src={logo} 
       alt="Logo Pracowni Megan"
-      width={300} // dopasuj rzeczywiste wymiary obrazka
+      width={300}
       height={300}
-      priority // wymusza preload obrazu (LCP optimization)
+      priority
     />
   </div><div className="hero-copy"><Kicker>JĘZYK, KTÓRY SPRAWIA FRAJDĘ</Kicker><h1>Przejdź na ty<br />z angielskim</h1><p>Kameralne kursy angielskiego w Zielonej Górze.<br />Młodzież młodsza i starsza, oraz dorośli.<br/> Zajęcia indywidualne i grupowe do pięciu osób.</p><div className="hero-actions"><a className="button" href="tel:501486888"><Phone size={18} />501 486 888</a><a className="outline-button" href="#kontakt">Napisz wiadomość</a></div></div></section>
     <section id="o-nas" className="section patterned reveal"><div className="pattern-motifs" aria-hidden="true">{Array.from({ length: 24 }, (_, index) => { const Icon = [CircleHelp, MessageCircle, ThumbsUp][index % 3]; return <Icon key={index} size={index % 3 === 1 ? 32 : 26} strokeWidth={1.35} /> })}</div><div className="pattern-content"><h2>Dlaczego Pracownia Megan</h2><div className="benefit-grid">{benefits.map(({ title, text, icon: Icon }) => <article className="benefit reveal reveal-delay" key={title}><div className="benefit-icon" aria-hidden="true"><Icon size={28} strokeWidth={1.8} /></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>

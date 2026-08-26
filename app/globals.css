@@ -633,7 +633,6 @@ h3 {
 .review-author-meta strong, .review-author-meta small { display: block; white-space: nowrap; }
 .review-author-meta small { color: #697287; }
 
-/* Style mobilne - umieszczone NA KOŃCU, dzięki czemu skutecznie ukrywają strzałki */
 @media (max-width: 700px) {
   .review-carousel { display: block; }
   .carousel-arrow { display: none; }

@@ -26,7 +26,6 @@ export async function POST(request: Request) {
     const safeTitle = escapeHtml(title || 'Zapytanie o kurs');
     const safeMessage = escapeHtml(message).replace(/\n/g, '<br/>');
 
-    // Estetyczny szablon HTML
     const htmlContent = `
       <!DOCTYPE html>
       <html lang="pl">
@@ -117,7 +116,6 @@ export async function POST(request: Request) {
       </html>
     `;
     
-    // Wysyłka maila na skrzynkę właścicielki
     await resend.emails.send({
       from: 'Formularz Pracownia Megan <onboarding@resend.dev>',
       to: 'pracowniamegan@gmail.com',
