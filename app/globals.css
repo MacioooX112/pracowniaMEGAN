@@ -1,10 +1,10 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@700;800;900&display=swap');@import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
 @theme inline {
   --font-sans: Arial, Helvetica, sans-serif;
-  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-serif: 'Rokkitt', Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -24,9 +24,15 @@ h4,
 .course h3,
 .contact-form h3,
 .big-phone {
-  font-family: Georgia, 'Times New Roman', serif !important;
-  font-weight: 700 !important;
+  font-family: 'Rokkitt', Georgia, serif !important;
+  font-weight: 800 !important;
+  font-size-adjust: 0.5;
   color: #14203b;
+}
+@media(max-width:700px){
+  h1{
+    font-size-adjust: 0.45;
+  }
 }
 
 p,
@@ -98,20 +104,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-.logo,
-.kicker,
-.format-row strong,
-.benefit h3,
-.course h3,
-.contact-form h3 {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: 700;
-  color: #14203b;
-}
+
 
 p,
 small,
@@ -156,7 +149,7 @@ a {
 }
 
 .logo {
-  font-family: Georgia, serif;
+  font-family: 'Rockwell', Georgia, serif;
   font-size: 19px;
   line-height: 1.05;
   letter-spacing: .02em;
@@ -270,7 +263,7 @@ nav a:not(.phone-pill):hover {
 h1,
 h2,
 h3 {
-  font-family: Georgia, serif;
+  font-family: 'Rockwell', Georgia, serif;
 }
 
 h1 {
@@ -517,12 +510,13 @@ h3 {
 
 .format-number {
   color: #c73b30;
-  font: 700 14px Georgia, serif;
+  font-family: 'Rokkitt', Georgia, serif !important;
+  font-weight: 800 !important;
+  font-size-adjust: 0.6;
+
 }
 
-.format-row strong {
-  font: 700 18px Georgia, serif;
-}
+
 
 .format-row>span:last-child {
   color: #4f596d;
@@ -714,7 +708,7 @@ blockquote p {
   align-items: center;
   justify-content: space-between;
   text-align: left;
-  font: 700 19px Georgia, serif;
+  font: 700 19px 'Rockwell', Georgia, serif;
   cursor: pointer;
 }
 
@@ -773,7 +767,7 @@ blockquote p {
 }
 
 .big-phone {
-  font: 700 40px Georgia, serif;
+  font: 700 40px 'Rockwell', Georgia, serif;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -937,7 +931,7 @@ footer {
   }
 
   .mobile-menu>a:not(.button) {
-    font: 700 24px Georgia, serif;
+    font: 700 24px 'Rockwell', Georgia, serif;
     border-bottom: 1px solid var(--border);
     padding-bottom: 15px;
   }
@@ -1261,7 +1255,7 @@ footer { padding-inline: max(30px, calc((100% - 1240px) / 2)); }
 }
 .process-step:hover { box-shadow: 0 18px 34px #14203b18; border-color: #d84a3e; }
 .process-step:hover .process-arrow { transform: translateY(-50%); }
-.process-number { color: #d84a3e; font: 700 42px Georgia, serif; line-height: 1; margin-bottom: 28px; }
+.process-number { color: #d84a3e; font: 700 42px 'Rockwell', Georgia, serif; line-height: 1; margin-bottom: 28px; }
 .process-step h3 { margin: 0 0 14px; font-size: 22px; }
 .process-step p { margin: 0; color: #4f596d; line-height: 1.75; }
 .process-arrow {
