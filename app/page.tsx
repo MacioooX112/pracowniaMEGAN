@@ -14,9 +14,9 @@ import { StaticImageData } from 'next/image';
 const nav = [['Kursy', '#kursy'], ['Zajęcia', '#formy'], ['Opinie', '#opinie'], ['Pytania', '#pytania'], ['Kontakt', '#kontakt']]
 
 const benefits = [
-  { title: 'Program pod jednego ucznia', text: 'Nie ma gotowego podręcznika dla wszystkich. Zaczynamy od rozmowy o tym, po co Ci angielski i na jakim jesteś poziomie.', icon: Target },
+  { title: 'Program pod jednego ucznia', text: 'Nie ma gotowego podręcznika dla wszystkich. Zaczynamy od rozmowy do czego potrzebny Ci angielski i na jakim jesteś poziomie.', icon: Target },
   { title: 'Nauka bez blokady', text: 'Blokada i wstyd przed mówieniem to najczęstszy powód, dla którego ktoś do mnie trafia. U mnie mówi się od pierwszej lekcji, bez oceniania i bez pośpiechu.', icon: MessageCircle },
-  { title: 'Grupy wiekowe', text: 'Młodsza i starsza młodzież, dorośli, aż po osoby po siedemdziesiątce. Tempo, materiały i sposób tłumaczenia dostowsowane do każdego.', icon: Users },
+  { title: 'Grupy wiekowe', text: 'Młodsza i starsza młodzież, dorośli, aż po osoby po siedemdziesiątce. Tempo, materiały i sposób tłumaczenia dostosowane do każdego.', icon: Users },
   { title: '17 lat praktyki', text: 'Pracownia działa od 2009 roku. Przez ten czas zebrałam własne sposoby na to, co zwykle sprawia trudność: czasy, wymowę i strach przed pierwszym zdaniem.', icon: CalendarDays },
 ]
 
@@ -27,15 +27,15 @@ const courses = [
   ['Przygotowanie do egzaminów', 'Matura, egzamin ósmoklasisty, certyfikaty i rozmowy kwalifikacyjne. Ćwiczymy dokładnie ten format, który Cię czeka.', ['matura', 'certyfikaty', 'rozmowa kwalifikacyjna'], 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=85'],
 ]
 
-const formats = [['Zajęcia indywidualne', 'jeden na jeden, tempo dopasowane do ucznia'], ['Zajęcia w parze', 'nauka z drugą osobą o zbliżonym poziomie'], ['Mała grupa', 'kameralne zajęcia, każdy zdąży się odezwać'], ['Konwersacje', 'Rozmowy bez podręcznika'], ['Przygotowanie do egzaminu', 'Zajęcia pod konkretny format'], ['Zajęcia online', 'przez internet, z dowolnego miejsca']]
+const formats = [['Zajęcia indywidualne', 'Jeden na jeden, tempo dopasowane do ucznia'], ['Zajęcia w parze', 'Nauka z drugą osobą o zbliżonym poziomie'], ['Mała grupa', 'Kameralne zajęcia, każdy zdąży się odezwać'], ['Konwersacje', 'Rozmowy bez podręcznika'], ['Przygotowanie do egzaminu', 'Zajęcia pod konkretny format'], ['Zajęcia online', 'Przez internet, z dowolnego miejsca']]
 const processSteps = [
   ['Rozmowa', 'Umawiamy się na pierwsze spotkanie. Sprawdzam poziom i pytam do czego angielski jest potrzebny: praca, szkoła, wyjazd czy rozmowy z rodziną za granicą.'],
   ['Program pod cel', 'Proponuję materiały na czas nauki. Modyfikuję je, gdy w jej trakcie coś idzie szybciej albo wolniej.'],
-  ['Regularne zajęcia', 'Spotykamy się raz lub dwa razy w tygodniu w pracowni przy Źródlanej albo online, jeśli tak wygodniej. Po każdej lekcji wiadomo, co ćwiczyć do następnego razu.'],
+  ['Regularne zajęcia', 'Spotykamy się według ustalonej częstotliwości w tygodniu w pracowni przy Źródlanej albo online, jeśli tak wygodniej. Po każdej lekcji wiadomo, co ćwiczyć do następnego razu.'],
 ]
 
 const faqs: { question: string; anwser: string }[] = [
-  { question: 'Od czego zaczynamy?', anwser: 'Od krótkiej rozmowy telefonicznej. Umawiamy pierwsze spotkanie, sprawdzam poziom, ustalamy cel i dopiero potem układam program.' },
+  { question: 'Od czego zaczynamy?', anwser: 'Umawiamy pierwsze spotkanie, sprawdzam poziom, ustalamy cel i dopiero potem układam program.' },
   { question: 'Czy uczy Pani osoby, które zaczynają od zera?', anwser: 'Tak. Zaczynam od podstaw zarówno z młodzieżą, jak i z dorosłymi, którzy nie mieli wcześniej kontaktu z angielskim.' },
   { question: 'Mam blokadę i wstydzę się mówić. Czy to problem?', anwser: 'To najczęstszy powód, dla którego dorośli do mnie trafiają. Zaczynamy od prostych zdań na tematy, które Pana albo Panią interesują, bez poprawiania co drugie słowo.' },
   { question: 'Ile trwają zajęcia i jak często się odbywają?', anwser: 'Najczęściej raz lub dwa razy w tygodniu. Długość i częstotliwość ustalamy przy zapisie, zależnie od celu i wieku ucznia.' },
@@ -135,7 +135,7 @@ const getColorPair = (name: string) => {
     }
   }
   return <main>
-    <header className="site-header"><a href="#start" className="logo">Pracownia<br /><strong>MEGAN</strong></a><nav>{nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}<a className="phone-pill" href="tel:501486888"><Phone size={17} />501 486 888</a></nav><button className="menu-button" aria-label="Otwórz menu" onClick={() => setMobile(true)}><Menu /></button></header>
+    <header className="site-header"><a href="#start" className="logo">Pracownia<br />Megan</a><nav>{nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}<a className="phone-pill" href="tel:501486888"><Phone size={17} />501 486 888</a></nav><button className="menu-button" aria-label="Otwórz menu" onClick={() => setMobile(true)}><Menu /></button></header>
     {mobile && <div className="mobile-overlay" onClick={() => setMobile(false)}><div className="mobile-menu" onClick={(e) => e.stopPropagation()}><div className="mobile-menu-top"><span className="logo">Pracownia<br /><strong>MEGAN</strong></span><button aria-label="Zamknij menu" onClick={() => setMobile(false)}><X /></button></div>{nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMobile(false)}>{label}</a>)}<a className="button" href="#kontakt" onClick={() => setMobile(false)}>Napisz wiadomość</a></div></div>}
     <div className="location" id="start">Zielona Góra · Źródlana 30A</div>
     <section className="hero"><div className="portrait">
@@ -146,7 +146,12 @@ const getColorPair = (name: string) => {
       height={300}
       priority
     />
-  </div><div className="hero-copy"><Kicker>JĘZYK, KTÓRY SPRAWIA FRAJDĘ</Kicker><h1>Przejdź na ty <br/>z angielskim</h1><p>Kameralne kursy angielskiego w Zielonej Górze.<br />Młodzież młodsza i starsza, oraz dorośli.<br/> Zajęcia indywidualne i grupowe do pięciu osób.</p><div className="hero-actions"><a className="button" href="tel:501486888"><Phone size={18} />501 486 888</a><a className="outline-button" href="#kontakt">Napisz wiadomość</a></div></div></section>
+  </div><div className="hero-copy"><Kicker>JĘZYK, KTÓRY SPRAWIA FRAJDĘ</Kicker><h1>Przejdź na "ty" <br/>z angielskim</h1><p className="hero-text">
+    Kameralne kursy angielskiego w&nbsp;Zielonej Górze.<br />
+    Młodzież młodsza i&nbsp;starsza oraz dorośli.<br />
+    Zajęcia indywidualne i&nbsp;grupowe<br className="mobile-only" /> do&nbsp;pięciu&nbsp;osób.
+  </p>
+<div className="hero-actions"><a className="button" href="tel:501486888"><Phone size={18} />501 486 888</a><a className="outline-button" href="#kontakt">Napisz wiadomość</a></div></div></section>
     <section id="o-nas" className="section patterned reveal"><div className="pattern-motifs" aria-hidden="true">{Array.from({ length: 24 }, (_, index) => { const Icon = [CircleHelp, MessageCircle, ThumbsUp][index % 3]; return <Icon key={index} size={index % 3 === 1 ? 32 : 26} strokeWidth={1.35} /> })}</div><div className="pattern-content"><h2>Dlaczego Pracownia Megan?</h2><div className="benefit-grid">{benefits.map(({ title, text, icon: Icon }) => <article className="benefit reveal reveal-delay" key={title}><div className="benefit-icon" aria-hidden="true"><Icon size={28} strokeWidth={1.8} /></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
     <section id="jak-wygladaja" className="section process-section"><Kicker>BEZ NIESPODZIANEK</Kicker><h2>Jak wyglądają zajęcia</h2><div className="process-grid" aria-label="Jak wyglądają zajęcia">{processSteps.map(([title, text], index) => <article className="process-step" key={title}><div className="process-number">0{index + 1}</div><h3>{title}</h3><p>{text}</p>{index < processSteps.length - 1 && <ArrowRight className="process-arrow" aria-hidden="true" />}</article>)}</div></section>
     <section id="kursy" className="section courses reveal"><Kicker>DLA KAŻDEGO WIEKU</Kicker><h2>Kursy</h2><div className="course-grid">{courses.map(([title, text, tags, image], index) => 

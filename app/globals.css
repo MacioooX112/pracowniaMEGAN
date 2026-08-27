@@ -26,12 +26,12 @@ h4,
 .big-phone {
   font-family: 'Rokkitt', Georgia, serif !important;
   font-weight: 800 !important;
-  font-size-adjust: 0.5;
+  font-size-adjust: 0.45;
   color: #14203b;
 }
 @media(max-width:700px){
   h1{
-    font-size-adjust: 0.45;
+    font-size-adjust: 0.4;
   }
 }
 
@@ -149,15 +149,12 @@ a {
 }
 
 .logo {
-  font-family: 'Rockwell', Georgia, serif;
-  font-size: 19px;
+  font-family: 'Rokkitt', Georgia, serif !important;
+  font-weight: 800 !important;
+  font-size-adjust: 0.5;
   line-height: 1.05;
-  letter-spacing: .02em;
+  letter-spacing: .01em;
   color: white;
-}
-
-.logo strong {
-  letter-spacing: .2em;
 }
 
 nav {
@@ -288,6 +285,22 @@ h3 {
   font-size: 20px;
   line-height: 1.7;
 }
+/* Domyślnie ukrywamy mobilne łamanie linii na komputerach */
+.mobile-only {
+  display: none;
+}
+
+/* Układ poprawiający automatyczne równoważenie wierszy */
+.hero-text {
+  text-wrap: balance; /* Automatycznie dba o estetyczne rozłożenie tekstu w nowoczesnych przeglądarkach */
+}
+
+/* Włączamy dodatkowy <br> tylko na urządzeniach mobilnych */
+@media (max-width: 768px) {
+  .mobile-only {
+    display: inline;
+  }
+}
 
 .hero-actions {
   display: flex;
@@ -306,6 +319,7 @@ h3 {
 .section {
   padding: 88px max(24px, calc((100% - 1080px)/2));
 }
+
 
 .patterned {
   position: relative;
@@ -549,6 +563,11 @@ h3 {
 .formats-cards .format-row strong {
   display: block;
   margin-bottom: 12px;
+}
+
+.format-row strong{
+    font-size-adjust: 0.5;
+
 }
 
 .formats-cards .format-row>span:last-child {
@@ -1166,7 +1185,7 @@ blockquote { border-radius: 0; border-top-width: 5px; min-height: 320px; padding
 .faq-item button { padding: 26px 0; color: #14203b; }
 .faq-item svg { color: #c73b30; }
 .faq-answer { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .3s ease, opacity .25s ease; }
-.faq-answer > p { min-height: 0; overflow: hidden; padding: 0; margin: 0; color: #4f596d; max-width: 680px; transition: padding .3s ease; }
+.faq-answer > p { min-height: 0; overflow: hidden; padding: 0; margin: 0; color: #4f596d; max-width: 680px; transition: padding .3s ease; text-wrap: pretty;}
 .faq-answer.is-open { grid-template-rows: 1fr; opacity: 1; }
 .faq-answer.is-open > p { padding: 0 0 27px; }
 .contact { padding-inline: max(30px, calc((100% - 1240px) / 2)); }
@@ -1257,7 +1276,7 @@ footer { padding-inline: max(30px, calc((100% - 1240px) / 2)); }
 .process-step:hover .process-arrow { transform: translateY(-50%); }
 .process-number { color: #d84a3e; font: 700 42px 'Rockwell', Georgia, serif; line-height: 1; margin-bottom: 28px; }
 .process-step h3 { margin: 0 0 14px; font-size: 22px; }
-.process-step p { margin: 0; color: #4f596d; line-height: 1.75; }
+.process-step p { margin: 0; color: #4f596d; line-height: 1.75; text-wrap: pretty; }
 .process-arrow {
   position: absolute;
   z-index: 2;
