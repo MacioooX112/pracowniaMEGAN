@@ -36,11 +36,11 @@ const processSteps = [
 
 const faqs: { question: string; anwser: string }[] = [
   { question: 'Od czego zaczynamy?', anwser: 'Umawiamy pierwsze spotkanie, sprawdzam poziom, ustalamy cel i dopiero potem układam program.' },
-  { question: 'Czy uczy Pani osoby, które zaczynają od zera?', anwser: 'Tak. Zaczynam od podstaw zarówno z młodzieżą, jak i z dorosłymi, którzy nie mieli wcześniej kontaktu z angielskim.' },
-  { question: 'Mam blokadę i wstydzę się mówić. Czy to problem?', anwser: 'To najczęstszy powód, dla którego dorośli do mnie trafiają. Zaczynamy od prostych zdań na tematy, które Pana albo Panią interesują, bez poprawiania co drugie słowo.' },
+  { question: 'Czy mogę zacząć od zera?', anwser: 'Tak. Uczę od podstaw zarówno młodzież jak i doroslych, którzy nie mieli wcześniej kontaktu z angielskim.' },
+  { question: 'Mam blokadę i wstydzę się mówić. Czy to problem?', anwser: 'To częsty powód, dla którego kursanci do mnie trafiają. Zaczynamy od prostych zdań na tematy, które Cię interesują, bez poprawiania co drugie słowo.' },
   { question: 'Ile trwają zajęcia i jak często się odbywają?', anwser: 'Najczęściej raz lub dwa razy w tygodniu. Długość i częstotliwość ustalamy przy zapisie, zależnie od celu i wieku ucznia.' },
-  { question: 'Czy przygotowuje Pani do matury i certyfikatów?', anwser: 'Tak. Ćwiczymy dokładnie ten format, który czeka ucznia: zadania z arkusza, wypowiedź ustną i pisemną, powtórki pod termin egzaminu.' },
-  { question: 'Gdzie odbywają się zajęcia?', anwser: 'W pracowni przy Źródlanej 30A w Zielonej Górze, od poniedziałku do piątku w godzinach 7:00-19:00. Prowadzę też zajęcia online, więc odległość nie jest przeszkodą.' },
+  { question: 'Czy w Pracowni przygotuję się do matury i certyfikatów?', anwser: 'Tak. Ćwiczymy dokładnie ten format, który czeka ucznia: zadania z arkusza, wypowiedź ustną i pisemną, powtórki pod termin egzaminu.' },
+  { question: 'Gdzie odbywają się zajęcia?', anwser: 'W Pracowni przy Źródlanej 30A w Zielonej Górze, od poniedziałku do piątku w godzinach 7:00-19:00. Prowadzę też zajęcia online, więc odległość nie jest przeszkodą.' },
 ]
 
 function Kicker({ children }: { children: React.ReactNode }) {
@@ -153,7 +153,7 @@ const getColorPair = (name: string) => {
   </p>
 <div className="hero-actions"><a className="button" href="tel:501486888"><Phone size={18} />501 486 888</a><a className="outline-button" href="#kontakt">Napisz wiadomość</a></div></div></section>
     <section id="o-nas" className="section patterned reveal"><div className="pattern-motifs" aria-hidden="true">{Array.from({ length: 24 }, (_, index) => { const Icon = [CircleHelp, MessageCircle, ThumbsUp][index % 3]; return <Icon key={index} size={index % 3 === 1 ? 32 : 26} strokeWidth={1.35} /> })}</div><div className="pattern-content"><h2>Dlaczego Pracownia Megan?</h2><div className="benefit-grid">{benefits.map(({ title, text, icon: Icon }) => <article className="benefit reveal reveal-delay" key={title}><div className="benefit-icon" aria-hidden="true"><Icon size={28} strokeWidth={1.8} /></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
-    <section id="jak-wygladaja" className="section process-section"><Kicker>BEZ NIESPODZIANEK</Kicker><h2>Jak wyglądają zajęcia</h2><div className="process-grid" aria-label="Jak wyglądają zajęcia">{processSteps.map(([title, text], index) => <article className="process-step" key={title}><div className="process-number">0{index + 1}</div><h3>{title}</h3><p>{text}</p>{index < processSteps.length - 1 && <ArrowRight className="process-arrow" aria-hidden="true" />}</article>)}</div></section>
+    <section id="jak-wygladaja" className="section process-section"><Kicker>BEZ NIESPODZIANEK</Kicker><h2>Jak wyglądają zajęcia?</h2><div className="process-grid" aria-label="Jak wyglądają zajęcia">{processSteps.map(([title, text], index) => <article className="process-step" key={title}><div className="process-number">0{index + 1}</div><h3>{title}</h3><p>{text}</p>{index < processSteps.length - 1 && <ArrowRight className="process-arrow" aria-hidden="true" />}</article>)}</div></section>
     <section id="kursy" className="section courses reveal"><Kicker>DLA KAŻDEGO WIEKU</Kicker><h2>Kursy</h2><div className="course-grid">{courses.map(([title, text, tags, image], index) => 
       <article className={`course reveal course-slide-${(index % 2) === 0 ? 'left' : 'right'}`} key={title as string}>
         {/* Kontener na zdjęcie */}
