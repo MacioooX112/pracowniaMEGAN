@@ -31,7 +31,7 @@ const formats = [['Zajęcia indywidualne', 'Jeden na jeden, tempo dopasowane do 
 const processSteps = [
   ['Rozmowa', 'Umawiamy się na pierwsze spotkanie. Sprawdzam poziom i pytam do czego angielski jest potrzebny: praca, szkoła, wyjazd czy rozmowy z rodziną za granicą.'],
   ['Program pod cel', 'Proponuję materiały na czas nauki. Modyfikuję je, gdy w jej trakcie coś idzie szybciej albo wolniej.'],
-  ['Regularne zajęcia', 'Spotykamy się według ustalonej częstotliwości w tygodniu w Pracowni przy Źródlanej albo online, jeśli tak wygodniej. Po każdej lekcji wiadomo, co ćwiczyć do następnego razu.'],
+  ['Regularne zajęcia', 'Spotykamy się według ustalonej częstotliwości w tygodniu w Pracowni przy ulicy Źródlanej albo online, jeśli tak wygodniej. Po każdej lekcji wiadomo, co ćwiczyć do następnego razu.'],
 ]
 
 const faqs: { question: string; anwser: string }[] = [
