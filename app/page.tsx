@@ -15,13 +15,13 @@ const nav = [['Kursy', '#kursy'], ['Zajęcia', '#formy'], ['Opinie', '#opinie'],
 
 const benefits = [
   { title: 'Program pod jednego ucznia', text: 'Nie ma gotowego podręcznika dla wszystkich. Zaczynamy od rozmowy do czego potrzebny Ci angielski i na jakim jesteś poziomie.', icon: Target },
-  { title: 'Nauka bez blokady', text: 'Blokada i wstyd przed mówieniem to najczęstszy powód, dla którego ktoś do mnie trafia. U mnie mówi się od pierwszej lekcji, bez oceniania i bez pośpiechu.', icon: MessageCircle },
+  { title: 'Nauka bez blokady', text: 'Blokada i wstyd przed mówieniem to najczęstszy powód, dla którego uczniowie do mnie trafiają. U mnie mówi się od pierwszej lekcji, bez oceniania i bez pośpiechu.', icon: MessageCircle },
   { title: 'Grupy wiekowe', text: 'Młodsza i starsza młodzież, dorośli, aż po osoby po siedemdziesiątce. Tempo, materiały i sposób tłumaczenia dostosowane do każdego.', icon: Users },
-  { title: '17 lat praktyki', text: 'Pracownia działa od 2009 roku. Przez ten czas zebrałam własne sposoby na to, co zwykle sprawia trudność: czasy, wymowę i strach przed pierwszym zdaniem.', icon: CalendarDays },
+  { title: '17 lat praktyki', text: 'Pracownia działa od 2009 roku. Dzięki doświadczeniu wiem jak pomóc w tym, co zwykle sprawia trudność: czasy, wymowa i strach przed pierwszym zdaniem.', icon: CalendarDays },
 ]
 
 const courses = [
-  ['Angielski dla młodzieży', 'Wsparcie przy szkole i przygotowanie do egzaminów. Gramatyka wyjaśniona tak, żeby wreszcie miała sens.', ['pod materiał szkolny', 'matura i egzamin ósmoklasisty', 'nauka mówienia'], angielskidlamlodziezy],
+  ['Angielski dla młodzieży', 'Wsparcie w nauce szkolnej, nauka języka angielskiego niezależnie od niej, przygotowanie do egzaminów. Gramatyka wyjaśniona tak, żeby wreszcie miała sens. Poszerzanie słownictwa.', ['pod materiał szkolny', 'matura i egzamin ósmoklasisty', 'nauka mówienia'], angielskidlamlodziezy],
   ['Angielski dla dorosłych', 'Dla osób, które uczyły się latami i nadal boją się odezwać, oraz dla tych, którzy zaczynają zupełnie od zera.', ['blokada językowa', 'angielski do pracy', 'wyjazdy i podróże'], angielskidladoroslych],
   ['Konwersacje', 'Rozmowy na tematy, które Cię interesują. Poprawiam na bieżąco, ale nie przerywam w pół zdania.', ['swobodna rozmowa'], konwersacja],
   ['Przygotowanie do egzaminów', 'Matura, egzamin ósmoklasisty, certyfikaty i rozmowy kwalifikacyjne. Ćwiczymy dokładnie ten format, który Cię czeka.', ['matura', 'certyfikaty', 'rozmowa kwalifikacyjna'], 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=85'],
@@ -31,16 +31,16 @@ const formats = [['Zajęcia indywidualne', 'Jeden na jeden, tempo dopasowane do 
 const processSteps = [
   ['Rozmowa', 'Umawiamy się na pierwsze spotkanie. Sprawdzam poziom i pytam do czego angielski jest potrzebny: praca, szkoła, wyjazd czy rozmowy z rodziną za granicą.'],
   ['Program pod cel', 'Proponuję materiały na czas nauki. Modyfikuję je, gdy w jej trakcie coś idzie szybciej albo wolniej.'],
-  ['Regularne zajęcia', 'Spotykamy się według ustalonej częstotliwości w tygodniu w pracowni przy Źródlanej albo online, jeśli tak wygodniej. Po każdej lekcji wiadomo, co ćwiczyć do następnego razu.'],
+  ['Regularne zajęcia', 'Spotykamy się według ustalonej częstotliwości w tygodniu w Pracowni przy Źródlanej albo online, jeśli tak wygodniej. Po każdej lekcji wiadomo, co ćwiczyć do następnego razu.'],
 ]
 
 const faqs: { question: string; anwser: string }[] = [
   { question: 'Od czego zaczynamy?', anwser: 'Umawiamy pierwsze spotkanie, sprawdzam poziom, ustalamy cel i dopiero potem układam program.' },
   { question: 'Czy mogę zacząć od zera?', anwser: 'Tak. Uczę od podstaw zarówno młodzież jak i doroslych, którzy nie mieli wcześniej kontaktu z angielskim.' },
-  { question: 'Mam blokadę i wstydzę się mówić. Czy to problem?', anwser: 'To częsty powód, dla którego kursanci do mnie trafiają. Zaczynamy od prostych zdań na tematy, które Cię interesują, bez poprawiania co drugie słowo.' },
-  { question: 'Ile trwają zajęcia i jak często się odbywają?', anwser: 'Najczęściej raz lub dwa razy w tygodniu. Długość i częstotliwość ustalamy przy zapisie, zależnie od celu i wieku ucznia.' },
+  { question: 'Mam blokadę i wstydzę się mówić. Czy to problem?', anwser: 'To częsty powód, dla którego uczniowie do mnie trafiają. Zaczynamy od prostych zdań na tematy, które Cię interesują, bez poprawiania co drugie słowo.' },
+  { question: 'Ile trwają zajęcia i jak często się odbywają?', anwser: 'Najczęściej 60 minut, raz lub dwa razy w tygodniu. Długość i częstotliwość ustalamy przy zapisie, zależnie od celu i wieku ucznia.' },
   { question: 'Czy w Pracowni przygotuję się do matury i certyfikatów?', anwser: 'Tak. Ćwiczymy dokładnie ten format, który czeka ucznia: zadania z arkusza, wypowiedź ustną i pisemną, powtórki pod termin egzaminu.' },
-  { question: 'Gdzie odbywają się zajęcia?', anwser: 'W Pracowni przy Źródlanej 30A w Zielonej Górze, od poniedziałku do piątku w godzinach 7:00-19:00. Prowadzę też zajęcia online, więc odległość nie jest przeszkodą.' },
+  { question: 'Gdzie odbywają się zajęcia?', anwser: 'W Pracowni przy Źródlanej 30a w Zielonej Górze, od poniedziałku do piątku w godzinach 7:00-19:00. Prowadzę też zajęcia online, więc odległość nie jest przeszkodą.' },
 ]
 
 function Kicker({ children }: { children: React.ReactNode }) {
@@ -137,7 +137,7 @@ const getColorPair = (name: string) => {
   return <main>
     <header className="site-header"><a href="#start" className="logo">Pracownia<br />Megan</a><nav>{nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}<a className="phone-pill" href="tel:501486888"><Phone size={17} />501 486 888</a></nav><button className="menu-button" aria-label="Otwórz menu" onClick={() => setMobile(true)}><Menu /></button></header>
     {mobile && <div className="mobile-overlay" onClick={() => setMobile(false)}><div className="mobile-menu" onClick={(e) => e.stopPropagation()}><div className="mobile-menu-top"><span className="logo">Pracownia<br /><strong>MEGAN</strong></span><button aria-label="Zamknij menu" onClick={() => setMobile(false)}><X /></button></div>{nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMobile(false)}>{label}</a>)}<a className="button" href="#kontakt" onClick={() => setMobile(false)}>Napisz wiadomość</a></div></div>}
-    <div className="location" id="start">Zielona Góra · Źródlana 30A</div>
+    <div className="location" id="start">Zielona Góra · Źródlana 30a</div>
     <section className="hero"><div className="portrait">
     <Image 
       src={logo} 
@@ -273,8 +273,18 @@ const getColorPair = (name: string) => {
           <a href="tel:501486888" className="big-phone"><Phone />501 486 888</a>
           <a href="mailto:pracowniamegan@gmail.com" className="email"><Mail />pracowniamegan@gmail.com</a>
           <div className="hours">{['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'].map((day, i) => <div key={day}><span>{day}</span><b>{i < 5 ? '7:00 - 19:00' : 'nieczynne'}</b></div>)}</div>
-          <div className="address"><MapPin size={19} />Źródlana 30A<br />65-734 Zielona Góra</div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10322.726681744294!2d15.510340000000001!3d51.951976!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470613ea8065700d%3A0xf21a9bbfa11be3b0!2zxblyw7NkbGFuYSAzMEEsIDY1LTczNCBaaWVsb25hIEfDs3JhLCBQb2xza2E!5e1!3m2!1spl!2sus!4v1787571751475!5m2!1spl!2sus" width="600" height="450" loading="lazy"></iframe>
+          <div className="address"><MapPin size={19} />Źródlana 30a<br />65-734 Zielona Góra</div>
+          <div className="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10322.726681744294!2d15.510340000000001!3d51.951976!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470613ea8065700d%3A0xf21a9bbfa11be3b0!2zxblyw7NkbGFuYSAzMEEsIDY1LTczNCBaaWVsb25hIEfDs3JhLCBQb2xza2E!5e1!3m2!1spl!2sus!4v1787571751475!5m2!1spl!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>        
         </div>
 
         <form className="contact-form" role="tabpanel" tabIndex={0} onClick={() => setContactView('form')} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setContactView('form') }} onSubmit={handleFormSubmit}>
@@ -331,6 +341,6 @@ const getColorPair = (name: string) => {
       </div>
     </section>
 
-    <footer><span>Pracownia MEGAN</span><span>© 2025</span></footer>
+    <footer><span>Pracownia MEGAN</span><span>© 2026</span></footer>
   </main>
 }

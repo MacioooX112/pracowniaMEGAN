@@ -839,7 +839,7 @@ blockquote p {
   color: #f0ae39;
 }
 
-.contact-info iframe {
+.contact-info .map-wrapper {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -900,6 +900,22 @@ footer {
 
 .mobile-overlay {
   display: none;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Określa wysokość mapy */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 @media(max-width:800px) {
