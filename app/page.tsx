@@ -15,9 +15,9 @@ const nav = [['Kursy', '#kursy'], ['Zajęcia', '#formy'], ['Opinie', '#opinie'],
 
 const benefits = [
   { title: 'Program pod jednego ucznia', text: 'Nie ma gotowego podręcznika dla wszystkich. Zaczynamy od rozmowy do czego potrzebny Ci angielski i na jakim jesteś poziomie.', icon: Target },
-  { title: 'Nauka bez blokady', text: 'Blokada i wstyd przed mówieniem to najczęstszy powód, dla którego uczniowie do mnie trafiają. U mnie mówi się od pierwszej lekcji, bez oceniania i bez pośpiechu.', icon: MessageCircle },
+  { title: 'Nauka bez blokady', text: 'Blokada i wstyd przed mówieniem to częsty powód, dla którego uczniowie do mnie trafiają. U mnie mówi się od pierwszej lekcji, bez oceniania i bez pośpiechu.', icon: MessageCircle },
   { title: 'Grupy wiekowe', text: 'Młodsza i starsza młodzież, dorośli, aż po osoby po siedemdziesiątce. Tempo, materiały i sposób tłumaczenia dostosowane do każdego.', icon: Users },
-  { title: '17 lat praktyki', text: 'Pracownia działa od 2009 roku. Dzięki doświadczeniu wiem jak pomóc w tym, co zwykle sprawia trudność: czasy, wymowa i strach przed pierwszym zdaniem.', icon: CalendarDays },
+  { title: '17 lat praktyki', text: 'Pracownia działa od 2009 roku. Dzięki doświadczeniu wiem jak pomóc w tym, co zwykle sprawia trudność: angielskich czasach, wymowie i strachu przed pierwszym zdaniem.', icon: CalendarDays },
 ]
 
 const courses = [
@@ -40,7 +40,7 @@ const faqs: { question: string; anwser: string }[] = [
   { question: 'Mam blokadę i wstydzę się mówić. Czy to problem?', anwser: 'To częsty powód, dla którego uczniowie do mnie trafiają. Zaczynamy od prostych zdań na tematy, które Cię interesują, bez poprawiania co drugie słowo.' },
   { question: 'Ile trwają zajęcia i jak często się odbywają?', anwser: 'Najczęściej 60 minut, raz lub dwa razy w tygodniu. Długość i częstotliwość ustalamy przy zapisie, zależnie od celu i wieku ucznia.' },
   { question: 'Czy w Pracowni przygotuję się do matury i certyfikatów?', anwser: 'Tak. Ćwiczymy dokładnie ten format, który czeka ucznia: zadania z arkusza, wypowiedź ustną i pisemną, powtórki pod termin egzaminu.' },
-  { question: 'Gdzie odbywają się zajęcia?', anwser: 'W Pracowni przy Źródlanej 30a w Zielonej Górze, od poniedziałku do piątku w godzinach 7:00-19:00. Prowadzę też zajęcia online, więc odległość nie jest przeszkodą.' },
+  { question: 'Gdzie odbywają się zajęcia?', anwser: 'W Pracowni przy ulicy Źródlanej 30a w Zielonej Górze, od poniedziałku do piątku w godzinach 7:00 - 19:00. Prowadzę też zajęcia online, więc odległość nie jest przeszkodą.' },
 ]
 
 function Kicker({ children }: { children: React.ReactNode }) {

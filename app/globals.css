@@ -512,6 +512,7 @@ h3 {
   padding: 26px 30px;
   border-bottom: 1px solid var(--border);
   transition: .2s ease;
+  text-wrap: pretty
 }
 
 .format-row:last-child {
@@ -1172,7 +1173,7 @@ body { overflow-x: hidden; }
 .benefit:nth-child(even) { border-right: 0; padding-left: 35px; padding-right: 0; }
 .benefit-icon { width: 52px; height: 52px; margin: 0 0 22px; background: #f3ded8; }
 .benefit h3 { margin: 0 0 12px; }
-.benefit p { max-width: 430px; margin: 0; }
+.benefit p { max-width: 430px; margin: 0; text-wrap: pretty }
 .courses { padding-inline: max(30px, calc((100% - 1240px) / 2)); }
 .courses>.kicker { justify-content: flex-start; }
 .course-grid { grid-template-columns: repeat(12, 1fr); gap: 20px; }
