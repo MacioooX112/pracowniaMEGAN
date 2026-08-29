@@ -118,7 +118,7 @@ export async function POST(request: Request) {
     
     await resend.emails.send({
       from: 'Formularz Kontaktowy <powiadomienia@pracowniamegan.com>',
-      to: 'maciooox112@gmail.com',
+      to: 'pracowniamegan@gmail.com',
       replyTo: email,
       subject: `✉️ [Formularz] ${title || 'Zapytanie o kurs'} – ${name}`,
       text: `Imię i nazwisko: ${name}\nE-mail klienta: ${email}\nTemat: ${title || 'Zapytanie o kurs'}\n\nTreść wiadomości:\n${message}`,
