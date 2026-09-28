@@ -40,7 +40,7 @@ const faqs: { question: string; anwser: string }[] = [
   { question: 'Mam blokadę i wstydzę się mówić. Czy to problem?', anwser: 'To częsty powód, dla którego uczniowie do mnie trafiają. Zaczynamy od prostych zdań na tematy, które Cię interesują, bez poprawiania co drugie słowo.' },
   { question: 'Ile trwają zajęcia i jak często się odbywają?', anwser: 'Najczęściej 60 minut, raz lub dwa razy w tygodniu. Długość i częstotliwość ustalamy przy zapisie, zależnie od celu i wieku ucznia.' },
   { question: 'Czy w Pracowni przygotuję się do matury i certyfikatów?', anwser: 'Tak. Ćwiczymy dokładnie ten format, który czeka ucznia: zadania z arkusza, wypowiedź ustną i pisemną, powtórki pod termin egzaminu.' },
-  { question: 'Gdzie odbywają się zajęcia?', anwser: 'W Pracowni przy ulicy Źródlanej 30a w Zielonej Górze, od poniedziałku do piątku w godzinach 7:00 - 19:00. Prowadzę też zajęcia online, więc odległość nie jest przeszkodą.' },
+  { question: 'Gdzie odbywają się zajęcia?', anwser: 'W Pracowni przy ulicy Źródlanej 30a w Zielonej Górze, od poniedziałku do piątku w godzinach 8:00 - 20:00. Prowadzę też zajęcia online, więc odległość nie jest przeszkodą.' },
 ]
 
 function Kicker({ children }: { children: React.ReactNode }) {
@@ -272,7 +272,7 @@ const getColorPair = (name: string) => {
         <div className="contact-info" role="tabpanel" tabIndex={0} onClick={() => setContactView('contact')} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setContactView('contact') }}>
           <a href="tel:501486888" className="big-phone"><Phone />501 486 888</a>
           <a href="mailto:pracowniamegan@gmail.com" className="email"><Mail />pracowniamegan@gmail.com</a>
-          <div className="hours">{['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'].map((day, i) => <div key={day}><span>{day}</span><b>{i < 5 ? '7:00 - 19:00' : 'nieczynne'}</b></div>)}</div>
+          <div className="hours">{['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'].map((day, i) => <div key={day}><span>{day}</span><b>{i < 5 ? '8:00 - 20:00' : 'nieczynne'}</b></div>)}</div>
           <div className="address"><MapPin size={19} />Źródlana 30a<br />65-734 Zielona Góra</div>
           <div className="map-wrapper">
             <iframe
